@@ -78,6 +78,20 @@ const Navibar: FC = () => {
             </Link>
           </Button>
         </NavbarItem>
+        <NavbarItem>
+          <Button variant="link">
+            <Link
+              to="works"
+              className={SpaceGrotesk.className}
+              spy
+              smooth
+              offset={-30}
+              duration={500}
+            >
+              blogs
+            </Link>
+          </Button>
+        </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>

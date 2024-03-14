@@ -6,3 +6,6 @@ next.config.js
 
 # postcss
 postcss.config.js
+
+# webpack
+webpack.config.example.js

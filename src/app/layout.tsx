@@ -5,6 +5,7 @@ import ThemeProvider from "@/utils/theme-provider";
 import UIProvider from "@/utils/UIProvider";
 import "@/styles/globals.css";
 import Navibar from "@/components/navbar/Navibar";
+import { ApolloWrapper } from "@/lib/client";
 
 export const metadata: Metadata = {
   title: {
@@ -22,12 +23,14 @@ interface RootLayoutProps {
 const RootLayout: FC<RootLayoutProps> = ({ children }) => (
   <html lang="en" suppressHydrationWarning>
     <body className={GeistSans.className}>
-      <UIProvider>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <Navibar />
-          {children}
-        </ThemeProvider>
-      </UIProvider>
+      <ApolloWrapper>
+        <UIProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Navibar />
+            {children}
+          </ThemeProvider>
+        </UIProvider>
+      </ApolloWrapper>
     </body>
   </html>
 );
