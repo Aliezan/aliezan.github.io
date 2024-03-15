@@ -14,6 +14,7 @@ export const metadata: Metadata = {
   },
   description:
     "Personal Portfolio of Muhammad Alieza Nuriman, Web Developer and Undergraduate Student at Politeknik Negeri Jakarta. Currently learning JavaScript modern web frameworks",
+  metadataBase: new URL("https://aliezan.is-a.dev/"),
 };
 
 interface RootLayoutProps {
