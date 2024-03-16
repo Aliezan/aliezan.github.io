@@ -5,7 +5,7 @@ import ThemeProvider from "@/utils/theme-provider";
 import UIProvider from "@/utils/UIProvider";
 import "@/styles/globals.css";
 import Navibar from "@/components/navbar/Navibar";
-import { ApolloWrapper } from "@/lib/client";
+import { ApolloWrapper } from "@/lib/apollo-provider";
 
 export const metadata: Metadata = {
   title: {

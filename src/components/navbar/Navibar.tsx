@@ -9,10 +9,10 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  Link,
 } from "@nextui-org/react";
 import { SpaceGrotesk } from "@/utils/font";
 import { Link as LinkScroll } from "react-scroll/modules";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "../Logo";
 import ThemeButton from "./ThemeButton";
@@ -38,7 +38,7 @@ const Navibar: FC = () => {
           <Logo width={100} height={100} />
         </NavbarBrand>
       </NavbarContent>
-      {path === "/" && (
+      {path === "/" ? (
         <>
           <NavbarContent className="hidden gap-4 sm:flex" justify="center">
             <NavbarItem>
@@ -84,7 +84,7 @@ const Navibar: FC = () => {
               </Button>
             </NavbarItem>
             <NavbarItem>
-              <Button variant="link">
+              <Button asChild variant="link">
                 <Link href="/blogs">blogs</Link>
               </Button>
             </NavbarItem>
@@ -110,6 +110,54 @@ const Navibar: FC = () => {
                   works
                 </LinkScroll>
               </Button>
+            </NavbarMenuItem>
+            <NavbarMenuItem>
+              <Button asChild variant="link">
+                <Link href="/blogs">blogs</Link>
+              </Button>
+            </NavbarMenuItem>
+          </NavbarMenu>
+        </>
+      ) : (
+        <>
+          <NavbarContent className="hidden gap-12 sm:flex" justify="center">
+            <NavbarMenuItem>
+              <Link
+                href="/"
+                color="foreground"
+                className={`${SpaceGrotesk.className} text-sm hover:underline`}
+              >
+                home
+              </Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem isActive={path === "/blogs"}>
+              <Link
+                href="/blogs"
+                aria-current={path === "blogs" && "page"}
+                className={`${SpaceGrotesk.className} text-sm hover:underline`}
+              >
+                blogs
+              </Link>
+            </NavbarMenuItem>
+          </NavbarContent>
+          <NavbarMenu>
+            <NavbarMenuItem>
+              <Link
+                href="/"
+                className={SpaceGrotesk.className}
+                color="foreground"
+              >
+                home
+              </Link>
+            </NavbarMenuItem>
+            <NavbarMenuItem isActive={path === "/blogs"}>
+              <Link
+                href="/blogs"
+                aria-current={path === "blogs" && "page"}
+                className={SpaceGrotesk.className}
+              >
+                blogs
+              </Link>
             </NavbarMenuItem>
           </NavbarMenu>
         </>
