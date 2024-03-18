@@ -8,13 +8,7 @@ import Navibar from "@/components/navbar/Navibar";
 import { ApolloWrapper } from "@/lib/apollo-provider";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Muhammad Alieza Nuriman - Portfolio",
-    template: "%s | Alieza Nuriman - Portfolio",
-  },
-  description:
-    "Personal Portfolio of Muhammad Alieza Nuriman, Web Developer and Undergraduate Student at Politeknik Negeri Jakarta. Currently learning JavaScript modern web frameworks",
-  metadataBase: new URL("https://aliezan.is-a.dev/"),
+  metadataBase: new URL("https://aliezan.is-a.dev"),
 };
 
 interface RootLayoutProps {
