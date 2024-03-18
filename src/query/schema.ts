@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const getBlogPosts = gql`
   query Blogs {
-    blogs {
+    blogs(sort: "createdAt:desc") {
       data {
         id
         attributes {
@@ -11,6 +11,7 @@ export const getBlogPosts = gql`
               attributes {
                 previewUrl
                 url
+                alternativeText
                 caption
               }
             }

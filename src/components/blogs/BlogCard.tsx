@@ -23,14 +23,16 @@ const BlogCard: FC<BlogCardProps> = ({
   alt,
   title,
 }) => (
-  <div className="grid h-fit w-fit gap-2">
+  <div className="grid h-fit w-fit">
     <div className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-16">
-      <div className="max-w-[500px] space-y-5">
-        <div className="flex h-[30px] gap-4">
-          {tags.map((tag, index) => (
-            <BlogTag key={index} tag={tag?.name.toUpperCase()} />
-          ))}
-          <p className="py-2 text-xs text-[#232E52] dark:text-white">
+      <div className="mt-4 max-w-[500px] space-y-2 md:space-y-4">
+        <div className="flex flex-col space-y-4 md:flex-row md:gap-4 md:space-y-0">
+          <div className="flex gap-4">
+            {tags.map((tag, index) => (
+              <BlogTag key={index} tag={tag?.name.toUpperCase()} />
+            ))}
+          </div>
+          <p className="text-tiny text-[#232E52] dark:text-white">
             {dateFormatter(createdAt).toUpperCase()}
           </p>
         </div>
@@ -54,7 +56,7 @@ const BlogCard: FC<BlogCardProps> = ({
           alt={alt}
           width={320}
           height={180}
-          className="h-[180px] w-[320px] object-cover"
+          className="order-first h-[180px] w-[320px] object-cover md:order-last"
         />
       ) : (
         <ImgPlaceholder />
