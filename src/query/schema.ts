@@ -1,8 +1,8 @@
-import { gql } from "@apollo/client";
+import { gql } from "@/__generated__/gql";
 
-export const getBlogPosts = gql`
-  query Blogs {
-    blogs(sort: "createdAt:desc") {
+export const getBlogPosts = gql(`
+  query Blogs($page: Int) {
+    blogs(sort: "createdAt:desc" pagination: { page: $page, pageSize: 5 }) {
       data {
         id
         attributes {
@@ -32,4 +32,4 @@ export const getBlogPosts = gql`
       }
     }
   }
-`;
+`);
