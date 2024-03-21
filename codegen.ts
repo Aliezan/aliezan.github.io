@@ -5,7 +5,7 @@ const config: CodegenConfig = {
   schema:
     process.env.NODE_ENV === "development"
       ? "http://localhost:1337/graphql"
-      : process.env.STRAPI_URL_GRAPHQL,
+      : `${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`,
   documents: "src/query/schema.ts",
   generates: {
     "./src/__generated__/": {

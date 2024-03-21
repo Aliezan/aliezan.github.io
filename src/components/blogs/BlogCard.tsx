@@ -1,8 +1,15 @@
+"use client";
+
 import React, { FC } from "react";
 import BlogTag from "@/components/blogs/BlogTag";
 import ImgPlaceholder from "@/components/blogs/ImgPlaceholder";
 import dateFormatter from "@/utils/dateFormatter";
 import Image from "next/image";
+import Link from "next/link";
+import {
+  BlocksRenderer,
+  type BlocksContent,
+} from "@strapi/blocks-react-renderer";
 
 type TagsData = {
   name: string;
@@ -14,6 +21,8 @@ type BlogCardProps = {
   imgUrl: string;
   alt: string;
   title: string;
+  slug: string;
+  content: BlocksContent;
 };
 
 const BlogCard: FC<BlogCardProps> = ({
@@ -22,13 +31,15 @@ const BlogCard: FC<BlogCardProps> = ({
   imgUrl,
   alt,
   title,
+  slug,
+  content,
 }) => (
   <div className="grid h-fit w-fit">
     <div className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-16">
       <div className="mt-4 max-w-[500px] space-y-2 md:space-y-4">
         <div className="flex flex-col space-y-4 md:flex-row md:gap-4 md:space-y-0">
           <div className="flex gap-4">
-            {tags.map((tag, index) => (
+            {tags?.map((tag, index) => (
               <BlogTag key={index} tag={tag?.name.toUpperCase()} />
             ))}
           </div>
@@ -37,18 +48,22 @@ const BlogCard: FC<BlogCardProps> = ({
           </p>
         </div>
         <div className="flex items-center">
-          <h1 className="line-clamp-2 text-2xl font-bold text-[#232E52] dark:text-white">
-            {title}
-          </h1>
+          <Link href={`/blogs/${slug}`}>
+            <h1 className="line-clamp-2 text-2xl font-bold text-[#232E52] hover:underline-offset-8 dark:text-white">
+              {title}
+            </h1>
+          </Link>
         </div>
-        <p className="line-clamp-3 text-justify text-xs">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur
-        </p>
+        <BlocksRenderer
+          content={content}
+          blocks={{
+            paragraph: ({ children }) => (
+              <p className="line-clamp-3 min-w-[500px] text-justify text-xs">
+                {children}
+              </p>
+            ),
+          }}
+        />
       </div>
       {imgUrl && alt ? (
         <Image

@@ -1,31 +1,50 @@
+"use client";
+
 import React, { FC } from "react";
 import BlogCard from "@/components/blogs/BlogCard";
-import { env } from "@/lib/env";
 import BlogPagination from "@/components/blogs/BlogPagination";
-import { BlogsQuery } from "@/__generated__/graphql";
+import { env } from "@/env/client";
+import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
+import { getBlogPosts } from "@/query/schema";
+import { useSearchParams } from "next/navigation";
 
-const BlogSection: FC<{ data: BlogsQuery }> = ({ data }) => (
-  <section className="mt-5 flex h-[1900px] items-center justify-center px-7 md:h-[1060px]">
-    <div className="grid gap-6">
-      {data?.blogs?.data?.map((blog) => (
-        <BlogCard
-          key={blog.id}
-          tags={blog?.attributes?.Tags}
-          createdAt={blog?.attributes?.createdAt ?? "NO DATE"}
-          imgUrl={env.STRAPI_URL_ENDPOINT.concat(
-            blog?.attributes?.Picture?.data?.attributes?.url!,
-          )}
-          alt={
-            blog?.attributes?.Picture?.data?.attributes?.alternativeText ??
-            "NO ALT PROVIDED"
-          }
-          title={blog?.attributes?.Title ?? "UNTTILED"}
-        />
-      ))}
+const BlogSection: FC = () => {
+  const searchParams = useSearchParams();
+  const page = searchParams.get("page") ?? "1";
+
+  const { data } = useSuspenseQuery(getBlogPosts, {
+    variables: { page: +page },
+    fetchPolicy: "cache-and-network",
+  });
+
+  return (
+    <section className="mt-5 px-7">
+      <div className="flex justify-center">
+        <div className="grid h-[1900px] gap-6 md:h-[1060px]">
+          {data?.blogs?.data?.map((blog) => (
+            <BlogCard
+              key={blog.id}
+              tags={blog?.attributes?.Tags}
+              createdAt={blog?.attributes?.createdAt ?? "NO DATE"}
+              imgUrl={env.NEXT_PUBLIC_STRAPI_URL.concat(
+                blog?.attributes?.Picture?.data?.attributes?.url!,
+              )}
+              alt={
+                blog?.attributes?.Picture?.data?.attributes?.alternativeText ??
+                "NO ALT PROVIDED"
+              }
+              title={blog?.attributes?.Title ?? "UNTTILED"}
+              slug={blog?.attributes?.slug ?? "NO SLUG"}
+              content={blog?.attributes?.Paragraph}
+            />
+          ))}
+        </div>
+      </div>
       <BlogPagination
         pageCount={data?.blogs?.meta?.pagination?.pageCount ?? 1}
+        page={+page}
       />
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 export default BlogSection;

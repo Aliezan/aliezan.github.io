@@ -23,7 +23,7 @@ const WorksCard: FC = () => (
       <CardHeader className="flex-col !items-start space-y-2 p-5">
         <div className="flex gap-3">
           <Image
-            src="./squadspacelogo.svg"
+            src="/squadspacelogo.svg"
             alt="squadspace"
             width={35}
             height={35}
@@ -73,7 +73,7 @@ const WorksCard: FC = () => (
       </CardHeader>
       <CardBody className="relative flex items-center">
         <Image
-          src="./SquadSpaceMC.png"
+          src="/SquadSpaceMC.png"
           alt="squadspace"
           width={500}
           height={500}
@@ -85,15 +85,15 @@ const WorksCard: FC = () => (
             Made with
           </p>
           <div className="flex gap-2">
-            <Image src="./react.svg" alt="react" width={23} height={23} />
+            <Image src="/react.svg" alt="react" width={23} height={23} />
             <Image
-              src="./tailwindcss.svg"
+              src="/tailwindcss.svg"
               alt="tailwind"
               width={23}
               height={23}
             />
-            <Image src="./zustand.png" alt="react" width={23} height={23} />
-            <Image src="./formik.svg" alt="formik" width={23} height={23} />
+            <Image src="/zustand.png" alt="react" width={23} height={23} />
+            <Image src="/formik.svg" alt="formik" width={23} height={23} />
             <p className="mt-1 text-small font-bold">+4 more</p>
           </div>
         </div>
@@ -150,7 +150,7 @@ const WorksCard: FC = () => (
       </CardHeader>
       <CardBody className="relative flex items-center">
         <Image
-          src="./HabitTrackerMC.png"
+          src="/HabitTrackerMC.png"
           alt="HabitTracker"
           width={500}
           height={500}
@@ -162,16 +162,16 @@ const WorksCard: FC = () => (
             Made with
           </p>
           <div className="flex gap-2">
-            <Image src="./react.svg" alt="react" width={23} height={23} />
+            <Image src="/react.svg" alt="react" width={23} height={23} />
             <Image
-              src="./tailwindcss.svg"
+              src="/tailwindcss.svg"
               alt="tailwind"
               width={23}
               height={23}
             />
-            <Image src="./graphql.svg" alt="graphql" width={23} height={23} />
-            <Image src="./apollo.svg" alt="apollo" width={23} height={23} />
-            <Image src="./formik.svg" alt="formik" width={23} height={23} />
+            <Image src="/graphql.svg" alt="graphql" width={23} height={23} />
+            <Image src="/apollo.svg" alt="apollo" width={23} height={23} />
+            <Image src="/formik.svg" alt="formik" width={23} height={23} />
             <p className="mt-1 text-small font-bold">+4 more</p>
           </div>
         </div>
@@ -184,7 +184,7 @@ const WorksCard: FC = () => (
       <div className="absolute bottom-[-150px] left-[-200px] h-96 w-[750px] rotate-[-30deg] rounded-[100%] bg-[#07913f] blur-[80px]" />
       <CardHeader className="flex-col !items-start space-y-2 p-5">
         <div className="flex gap-3">
-          <Image src="./fav.svg" alt="identify-logo" width={35} height={35} />
+          <Image src="/fav.svg" alt="identify-logo" width={35} height={35} />
           <p className={`${SpaceGrotesk.className} text-[28px] font-medium`}>
             Identify
           </p>
@@ -226,7 +226,7 @@ const WorksCard: FC = () => (
         </div>
         <CardBody className="relative flex items-center">
           <Image
-            src="./IdentifyMC.png"
+            src="/IdentifyMC.png"
             alt="squadspace"
             width={800}
             height={800}
@@ -239,21 +239,21 @@ const WorksCard: FC = () => (
             </p>
             <div className="flex">
               <div className="flex gap-2">
-                <Image src="./next-js.svg" alt="next" width={23} height={23} />
+                <Image src="/next-js.svg" alt="next" width={23} height={23} />
                 <Image
-                  src="./tailwindcss.svg"
+                  src="/tailwindcss.svg"
                   alt="tailwind"
                   width={23}
                   height={23}
                 />
                 <Image
-                  src="./react-query-icon.svg"
+                  src="/react-query-icon.svg"
                   alt="react-query"
                   width={23}
                   height={23}
                 />
-                <Image src="./typescript.svg" alt="ts" width={23} height={23} />
-                <Image src="./next-auth.png" alt="ts" width={23} height={23} />
+                <Image src="/typescript.svg" alt="ts" width={23} height={23} />
+                <Image src="/next-auth.png" alt="ts" width={23} height={23} />
                 <p className="mt-1 text-small font-bold">+4 more</p>
               </div>
             </div>

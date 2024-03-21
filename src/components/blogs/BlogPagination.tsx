@@ -1,7 +1,4 @@
-"use client";
-
 import React, { FC } from "react";
-import { useSearchParams } from "next/navigation";
 import {
   Pagination,
   PaginationContent,
@@ -11,11 +8,11 @@ import {
   PaginationNext,
 } from "../ui/pagination";
 
-const BlogPagination: FC<{ pageCount: number }> = ({ pageCount }) => {
-  const searchParams = useSearchParams();
-  const page = searchParams.get("page") ?? "1";
-
-  const startPage = Math.floor((+page - 1) / 5) * 5 + 1;
+const BlogPagination: FC<{ pageCount: number; page: number }> = ({
+  pageCount,
+  page,
+}) => {
+  const startPage = Math.floor((page - 1) / 5) * 5 + 1;
   let endPage = startPage + 4;
 
   endPage = endPage > pageCount ? pageCount : endPage;

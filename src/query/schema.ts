@@ -16,6 +16,7 @@ export const getBlogPosts = gql(`
               }
             }
           }
+          slug
           Title
           Paragraph
           Tags

@@ -47,6 +47,7 @@ export type Blog = {
   locale?: Maybe<Scalars["String"]["output"]>;
   localizations?: Maybe<BlogRelationResponseCollection>;
   publishedAt?: Maybe<Scalars["DateTime"]["output"]>;
+  slug: Scalars["String"]["output"];
   updatedAt?: Maybe<Scalars["DateTime"]["output"]>;
 };
 
@@ -86,6 +87,7 @@ export type BlogFiltersInput = {
   not?: InputMaybe<BlogFiltersInput>;
   or?: InputMaybe<Array<InputMaybe<BlogFiltersInput>>>;
   publishedAt?: InputMaybe<DateTimeFilterInput>;
+  slug?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
 };
 
@@ -95,6 +97,7 @@ export type BlogInput = {
   Tags?: InputMaybe<Scalars["JSON"]["input"]>;
   Title?: InputMaybe<Scalars["String"]["input"]>;
   publishedAt?: InputMaybe<Scalars["DateTime"]["input"]>;
+  slug?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 export type BlogRelationResponseCollection = {
@@ -982,6 +985,7 @@ export type BlogsQuery = {
       id?: string | null;
       attributes?: {
         __typename?: "Blog";
+        slug: string;
         Title: string;
         Paragraph: any;
         Tags?: any | null;
@@ -1140,6 +1144,10 @@ export const BlogsDocument = {
                                   },
                                 ],
                               },
+                            },
+                            {
+                              kind: "Field",
+                              name: { kind: "Name", value: "slug" },
                             },
                             {
                               kind: "Field",

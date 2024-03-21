@@ -8,7 +8,7 @@
     "start": "NODE_ENV=production next start",
     "lint": "next lint",
     "postinstall": "husky install",
-    "watch": "graphql-codegen -w",
+    "watch": "NODE_ENV=development graphql-codegen -w",
     "codegen": "NODE_ENV=development graphql-codegen"
   },
   "lint-staged": {
@@ -25,6 +25,7 @@
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
+    "@strapi/blocks-react-renderer": "^1.0.1",
     "@types/node": "20.11.26",
     "@types/react": "18.2.65",
     "@types/react-dom": "18.2.21",
@@ -69,7 +70,6 @@
     "lint-staged": "^15.2.2",
     "prettier": "3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
-    "typescript": "5.4.2",
-    "@graphql-codegen/introspection": "4.0.3"
+    "typescript": "5.4.2"
   }
 }
