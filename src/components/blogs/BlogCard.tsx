@@ -34,7 +34,7 @@ const BlogCard: FC<BlogCardProps> = ({
   slug,
   content,
 }) => (
-  <div className="grid h-fit w-fit">
+  <div className="grid h-fit">
     <div className="flex flex-col gap-2 md:flex-row md:justify-between md:gap-16">
       <div className="mt-4 max-w-[500px] space-y-2 md:space-y-4">
         <div className="flex flex-col space-y-4 md:flex-row md:gap-4 md:space-y-0">
@@ -58,7 +58,7 @@ const BlogCard: FC<BlogCardProps> = ({
           content={content}
           blocks={{
             paragraph: ({ children }) => (
-              <p className="line-clamp-3 min-w-[500px] text-justify text-xs">
+              <p className="line-clamp-3 h-full w-[319.20px] whitespace-pre-line text-xs sm:w-[500px]">
                 {children}
               </p>
             ),

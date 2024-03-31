@@ -6,12 +6,8 @@ import BlogPagination from "@/components/blogs/BlogPagination";
 import { env } from "@/env/client";
 import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
 import { getBlogPosts } from "@/query/schema";
-import { useSearchParams } from "next/navigation";
 
-const BlogSection: FC = () => {
-  const searchParams = useSearchParams();
-  const page = searchParams.get("page") ?? "1";
-
+const BlogSection: FC<{ page: string }> = ({ page }) => {
   const { data } = useSuspenseQuery(getBlogPosts, {
     variables: { page: +page },
     fetchPolicy: "cache-and-network",

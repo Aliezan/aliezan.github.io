@@ -5,7 +5,7 @@
   "description": "A Strapi application",
   "scripts": {
     "develop:dev": "ENV_PATH=../../.env.development.local strapi develop",
-    "develop:staging": "ENV_PATH=../../.env.production strapi develop",
+    "develop:staging": "ENV_PATH=../.env strapi develop",
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi"
