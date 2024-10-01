@@ -4,18 +4,35 @@ import About from "./_sections/About";
 import Hero from "./_sections/Hero";
 import Works from "./_sections/Works";
 import ContactMe from "./_sections/ContactMe";
+import Footer from "./_sections/Footer";
 
 export const metadata: Metadata = {
-  title: "Home",
+  openGraph: {
+    title: "Muhammad Alieza Nuriman - Portfolio",
+    description:
+      "Personal Portfolio of Muhammad Alieza Nuriman, Web Developer and Undergraduate Student at Politeknik Negeri Jakarta. Currently learning JavaScript modern web frameworks",
+    siteName: "Muhammad Alieza Nuriman - Portfolio",
+    locale: "en_US",
+    type: "website",
+    images: "https://aliezan.is-a.dev/opengraph-image.png",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Muhammad Alieza Nuriman - Portfolio",
+    description:
+      "Personal Portfolio of Muhammad Alieza Nuriman, Web Developer and Undergraduate Student at Politeknik Negeri Jakarta. Currently learning JavaScript modern web frameworks",
+    images: ["https://aliezan.is-a.dev/opengraph-image.png"],
+  },
 };
 
 const Home: FC = () => (
-  <main>
+  <>
     <Hero />
     <About />
     <Works />
     <ContactMe />
-  </main>
+    <Footer />
+  </>
 );
 
 export default Home;
