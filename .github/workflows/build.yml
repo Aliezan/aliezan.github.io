@@ -7,7 +7,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: "aliezan/personal-portfolio"
+  IMAGE_NAME_1: "aliezan/personal-portfolio"
+  IMAGE_NAME_2: "aliezan/personal-portfolio-strapi"
 
 jobs:
   amd64:
@@ -24,16 +25,25 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GH_PAT }}
 
-      - name: Build image and push to registry
+      - name: Build and push nextjs image
         uses: docker/build-push-action@v4
         with:
           context: .
           file: Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_1 }}:latest
 
-      # - name: Deploy to Coolify
-      #   run: |
-      #     curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' \
-      #          --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
+      - name: Build and push strapi image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile.alt
+          platforms: linux/amd64
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_2 }}:latest
+
+      - name: Deploy to Coolify
+        run: |
+          curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' \
+               --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'

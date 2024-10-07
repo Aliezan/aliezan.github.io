@@ -3,6 +3,7 @@ import { HttpLink, InMemoryCache, ApolloClient } from "@apollo/client";
 import { registerApolloClient } from "@apollo/experimental-nextjs-app-support/rsc";
 
 const STRAPI_URL = env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+
 export const { getClient } = registerApolloClient(
   () =>
     new ApolloClient({

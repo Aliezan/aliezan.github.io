@@ -1,23 +1,22 @@
-"use client";
-
 import React, { FC } from "react";
 import BlogCard from "@/components/blogs/BlogCard";
 import BlogPagination from "@/components/blogs/BlogPagination";
 import { env } from "@/env/client";
-import { useSuspenseQuery } from "@apollo/experimental-nextjs-app-support/ssr";
+import { getClient } from "@/lib/apollo-server";
 import { getBlogPosts } from "@/query/schema";
 
-const BlogSection: FC<{ page: string }> = ({ page }) => {
-  const { data } = useSuspenseQuery(getBlogPosts, {
-    variables: { page: +page },
-    fetchPolicy: "cache-and-network",
+export const revalidate = 60;
+
+const BlogSection: FC<{ page: string }> = async ({ page }) => {
+  const { data } = await getClient().query({
+    query: getBlogPosts,
   });
 
   return (
     <section className="mt-5 px-7">
       <div className="flex justify-center">
         <div className="grid h-[1900px] gap-6 md:h-[1060px]">
-          {data?.blogs?.data?.map((blog) => (
+          {data?.blogs?.map((blog) => (
             <BlogCard
               key={blog.id}
               tags={blog?.attributes?.Tags}

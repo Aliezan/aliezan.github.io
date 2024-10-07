@@ -7,10 +7,14 @@ const config: CodegenConfig = {
       ? "http://localhost:1337/graphql"
       : `${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`,
   documents: "src/query/schema.ts",
+  ignoreNoDocuments: true,
   generates: {
-    "./src/__generated__/": {
+    "./src/gql/": {
       preset: "client",
       plugins: [],
+      config: {
+        enumsAsTypes: true,
+      },
       presetConfig: {
         gqlTagName: "gql",
       },

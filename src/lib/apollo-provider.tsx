@@ -10,6 +10,7 @@ import {
 import { env } from "@/env/client";
 
 const STRAPI_URL = env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
+
 function makeClient() {
   const httpLink = new HttpLink({
     uri: `${STRAPI_URL}/graphql`,
